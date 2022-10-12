@@ -24,7 +24,7 @@ public class LanceService {
 	private LeilaoDao leiloes;
 
 	public boolean propoeLance(NovoLanceDto lanceDto, String nomeUsuario) {
-
+		
 		Usuario usuario = usuarios.buscarPorUsername(nomeUsuario);
 		Lance lance = lanceDto.toLance(usuario);
 
@@ -36,6 +36,29 @@ public class LanceService {
 		}
 
 		return false;
+	}
+
+	public String retornarNomeUsuarioENomeLance() {
+		Usuario usuario = usuarios.buscarPorUsername("Igor");
+		return usuario.getNome() + " - " + getLeilao().getNome();
+	}
+	
+	
+	public String retornarNomeUsuarioENomeLance(String nomeUsuario, Integer codigoLeilao) {
+		Usuario usuario = usuarios.buscarPorUsername(nomeUsuario);
+		//return usuario.getNome() + " - " + getNomeLeilao() ;
+		return usuario.getNome() + " - " + getNomeLeilao(codigoLeilao) ;
+	}
+	
+	
+	
+	private String getNomeLeilao(Integer codigoLeilao) {
+		return "LEILAO REAL";
+	}
+
+	
+	public Leilao getLeilao() {
+		return new Leilao("LEILAO REAL");
 	}
 
 	public Leilao getLeilao(Long leilaoId) {
