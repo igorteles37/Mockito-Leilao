@@ -1,5 +1,7 @@
 package br.com.alura.leilao.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ public class LanceService {
 	public boolean propoeLance(NovoLanceDto lanceDto, String nomeUsuario) {
 		
 		Usuario usuario = usuarios.buscarPorUsername(nomeUsuario);
+		
 		Lance lance = lanceDto.toLance(usuario);
 
 		Leilao leilao = this.getLeilao(lanceDto.getLeilaoId());
@@ -63,6 +66,19 @@ public class LanceService {
 
 	public Leilao getLeilao(Long leilaoId) {
 		return leiloes.buscarPorId(leilaoId);
+	}
+	
+	
+	public int obterValorRealLance(int valorLance, int fatorDivisao) {
+		return realizarDivisaoLance(valorLance, fatorDivisao);
+	}
+	
+	public int realizarDivisaoLance(int valorLance, int fatorDivisao) {
+		
+		if (fatorDivisao == 0)
+			throw new ArithmeticException("Fator da divisao nao pode ser 0");
+		
+		return valorLance / fatorDivisao;  
 	}
 
 }
