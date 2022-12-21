@@ -6,14 +6,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+//import org.powermock.api.mockito.PowerMockito;
+//import org.powermock.core.classloader.annotations.PrepareForTest;
+//import org.powermock.modules.junit4.PowerMockRunner;
 
 import br.com.alura.leilao.dao.UsuarioDao;
 import br.com.alura.leilao.model.Usuario;
 
-
+/*
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(LanceService.class)
@@ -34,4 +34,5 @@ public class TesteMockMetodoPrivado {
         
         Assert.assertEquals("IGOR TELES MOCKADO - LEILAO MOCKADO", retornarNomeUsuarioENomeLance);
     }
-}
+    
+}*/

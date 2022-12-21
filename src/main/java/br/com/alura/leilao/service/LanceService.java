@@ -54,6 +54,12 @@ public class LanceService {
 	}
 	
 	
+	public Integer somar(Integer a, Integer b) {
+		
+		Integer soma = Calculadora.somar(a, b);
+		return soma;
+	}
+	
 	
 	private String getNomeLeilao(Integer codigoLeilao) {
 		return "LEILAO REAL";

@@ -2,6 +2,7 @@ package br.com.alura.leilao.service;
 
 
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
@@ -17,6 +18,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -232,7 +234,7 @@ public class LanceServiceTest {
 	
 	
 	
-	@Test(expected=NullPointerException.class)
+	@Test(expected=ArithmeticException.class)
 	public void deveLancarUmaExcecaoComMock() {
 			
 			when(lanceService.realizarDivisaoLance(10, 0)).thenThrow(new NullPointerException("Mensagem Mockada"));
@@ -240,5 +242,24 @@ public class LanceServiceTest {
 			lanceService.obterValorRealLance(10, 0);
 	}
 	
+	
+	//Exemplo Mock Método Estático
+	@Test
+	public void deveSomarDoisNumeros() {
+		
+		 
+		
+		 try (MockedStatic<Calculadora> utilities = Mockito.mockStatic(Calculadora.class)) {
+		        utilities.when(() -> Calculadora.somar(1, 2))
+		          .thenReturn(5);
+		        
+		        Integer soma = lanceService.somar(1, 2);
+
+		        assertEquals(Integer.valueOf(5), soma);
+		    }
+		
+		
+		
+	}
 
 }
