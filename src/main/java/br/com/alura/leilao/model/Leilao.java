@@ -180,8 +180,8 @@ public class Leilao {
 	}
 
 	public List<Lance> getLances() {
-		//return Collections.unmodifiableList(lances);
-		return lances;
+		return Collections.unmodifiableList(lances);
+		//return lances;
 	}
 
 	public Boolean getFechado() {
